@@ -1,27 +1,28 @@
 # LECTEUR SCRATCH POUR LA NDC
 
-2. Créer un fork (optionnel mais recommandé)
+## 1. Créer un fork (optionnel mais recommandé)
+
 Pour personnaliser Scratch-GUI, il est préférable de forker le dépôt officiel sur votre propre compte GitHub :
+* Allez sur le dépôt Scratch-GUI : https://github.com/LLK/scratch-gui.
+* Cliquez sur Fork pour créer une copie dans votre compte GitHub.
 
-Allez sur le dépôt Scratch-GUI : https://github.com/LLK/scratch-gui.
-Cliquez sur Fork pour créer une copie dans votre compte GitHub.
 Clonez ensuite votre fork :
-
-bash
-Copy code
+```
 git clone https://github.com/VotreNomUtilisateur/scratch-gui.git
 cd scratch-gui
-3. Installer les dépendances
+```
+
+## 2. Installer les dépendances
+
 Installez les dépendances nécessaires :
-
-bash
-Copy code
+```bash
 npm install
-4. Modifier Scratch-GUI pour accepter les URLs des fichiers .sb3
-Dans le fichier src/lib/project-fetcher-hoc.jsx, modifiez le code pour permettre de charger un fichier .sb3 via une URL. Ajoutez cette logique pour récupérer un paramètre projectUrl dans l’URL :
+```
 
-javascript
-Copy code
+## 3. Modifier Scratch-GUI pour accepter les URLs des fichiers .sb3
+
+Dans le fichier `src/lib/project-fetcher-hoc.jsx`, modifiez le code pour permettre de charger un fichier `.sb3` via une URL. Ajoutez cette logique pour récupérer un paramètre projectUrl dans l’URL :
+```javascript
 import queryString from 'query-string';
 
 // Récupérer le paramètre 'projectUrl' depuis l'URL
@@ -39,38 +40,45 @@ if (projectUrl) {
             console.error('Erreur lors du chargement du projet:', error);
         });
 }
-5. Compiler pour la production
-Compilez une version optimisée pour le déploiement sur GitHub Pages :
+```
 
-bash
-Copy code
+## 4. Compiler pour la production
+
+Compilez une version optimisée pour le déploiement sur GitHub Pages :
+```bash
 npm run build
+```
 Les fichiers générés se trouvent dans le dossier build/.
 
-6. Pousser vers GitHub
+## 5. Pousser vers GitHub
+
 Initialisez un dépôt Git local, ajoutez les fichiers et poussez-les vers GitHub :
 
-bash
-Copy code
+```bash
 git init
 git add .
 git commit -m "Initial commit"
 git branch -M main
 git remote add origin https://github.com/VotreNomUtilisateur/scratch-gui.git
 git push -u origin main
-7. Activer GitHub Pages
-Accédez à votre dépôt sur GitHub.
-Allez dans Settings > Pages.
-Dans la section "Build and Deployment", choisissez la branche main et le dossier /root ou /docs.
-Une URL sera générée, par exemple : https://VotreNomUtilisateur.github.io/scratch-gui/.
-Étape 2 : Intégrer le lecteur Scratch dans un autre site web
+```
+
+## 6. Activer GitHub Pages
+
+* Accédez à votre dépôt sur GitHub.
+* Allez dans `Settings > Pages`.
+* Dans la section `"Build and Deployment"`, choisissez la branche main et le dossier `/root` ou `/docs`.
+* Une URL sera générée, par exemple : `https://VotreNomUtilisateur.github.io/scratch-gui/`.
+
+## 7. Intégrer le lecteur Scratch dans un autre site web
+
 Vous pouvez intégrer votre lecteur Scratch-GUI hébergé sur GitHub Pages dans une iframe sur une autre page web.
 
-Exemple de page HTML avec iframe
+**Exemple de page HTML avec iframe**
+
 Voici un exemple simple pour intégrer Scratch-GUI dans un autre site :
 
-html
-Copy code
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -117,15 +125,15 @@ Copy code
     </script>
 </body>
 </html>
-Étape 3 : Tester et finaliser
-Hébergez la page d’intégration : Mettez la page HTML sur un autre serveur ou service d’hébergement comme GitHub Pages, Netlify, ou un serveur Apache/Nginx.
+```
 
-Tester le lecteur :
+## 8. Tester et finaliser
 
-Accédez à la page d’intégration.
-Entrez l’URL d’un fichier .sb3 dans le champ texte.
-Le fichier .sb3 devrait se charger et s’exécuter dans l’iframe Scratch-GUI.
-Personnalisation : Vous pouvez personnaliser l’apparence et ajouter des fonctionnalités comme :
-
-Une liste déroulante de fichiers .sb3.
-Des options pour modifier les paramètres Scratch (mode plein écran, zoom, etc.).
+* Hébergez la page d’intégration : Mettez la page HTML sur un autre serveur ou service d’hébergement comme GitHub Pages, Netlify, ou un serveur Apache/Nginx.
+* Tester le lecteur :
+  * Accédez à la page d’intégration.
+  * Entrez l’URL d’un fichier .sb3 dans le champ texte.
+  * Le fichier .sb3 devrait se charger et s’exécuter dans l’iframe Scratch-GUI.
+* Personnalisation : Vous pouvez personnaliser l’apparence et ajouter des fonctionnalités comme :
+  * Une liste déroulante de fichiers .sb3.
+  * Des options pour modifier les paramètres Scratch (mode plein écran, zoom, etc.).
